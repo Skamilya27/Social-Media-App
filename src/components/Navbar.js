@@ -12,15 +12,22 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="links">
-        <Link to="/"> HOME </Link>
-        <Link to="/login"> LOGIN </Link>
+        <Link to="/"> Home </Link>
+        {!user ? (
+          <Link to="/login"> Login </Link>
+        ) : (
+          <Link to="/createpost"> Create Post </Link>
+        )}
       </div>
       <div className="user">
         {user && (
           <>
             <p> {user?.displayName} </p>
             <img src={user.photoURL} alt="profile" width="30" height="30" />
-            <button onClick={signUserOut} className="signOut"> Log Out</button>
+            <button onClick={signUserOut} className="signOut">
+              {" "}
+              Log Out
+            </button>
           </>
         )}
       </div>
